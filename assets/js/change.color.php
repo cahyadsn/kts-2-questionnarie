@@ -1,0 +1,14 @@
+<?php
+if(isset($_POST)){
+ session_start();
+ $_SESSION['c']=$_POST['color'];
+ $_SESSION['s1']=$_POST['s1'];
+ $_SESSION['i1']=$_POST['i1'];
+ $_SESSION['p2']=$_POST['p1'];
+ $_SESSION['s2']=$_POST['s2'];
+ $_SESSION['i2']=$_POST['i2'];
+ $_SESSION['p1']=$_POST['p2'];
+ $_SESSION['s3']=$_POST['s3'];
+ $_SESSION['i3']=$_POST['i3'];
+ $_SESSION['p3']=$_POST['p3'];
+}
