@@ -39,10 +39,10 @@ $('a.color').click(function(){
 	if(defined('_ISONLINE')){ 
 		echo " document.getElementById('kts_en_css').href='https://www.w3schools.com/lib/w3-theme-'+color+'.css';";
 	}else{ 
-		echo "document.getElementById('kts_en_css').href='../assets/css/w3/w3-theme-'+color+'.css';";
+		echo "document.getElementById('kts_en_css').href='assets/css/w3/w3-theme-'+color+'.css';";
 	} 
   ?>
-  $.post('../assets/js/change.color.php',{'color':color});
+  $.post('assets/js/change.color.php',{'color':color});
 });
 // Questionnaire Validation
 $('form[id="kts"] input[type="submit"]').on('click',function(e){

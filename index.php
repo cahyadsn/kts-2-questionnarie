@@ -6,19 +6,24 @@
 FILENAME     : index.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2017-12-13
-DEMO SITE    : http://cahyadsn.dev.php.id/psycho/kts
+UPDATED DATE : 2021-02-24
+DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
-This program is free software; you can redistribute it and/or modify it under the 
-terms of the GNU General Public License as published by the Free Software 
-Foundation; either version 2 of the License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify it under the
+terms of the MIT License.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY 
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR 
-A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-copyright (c) 2017 by cahya dsn; cahyadsn@gmail.com
+See the MIT License for more details
+
+copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
 ================================================================================ */
 session_start();
 include 'inc/config.php';
@@ -27,7 +32,7 @@ $page=isset($_SESSION['page'])?$_SESSION['page']:0;
 $num_perpage=7;
 $_SESSION['author'] = 'cahyadsn';
 $_SESSION['ver']    = sha1(rand());
-$version    = '0.1';                  //<-- version number
+$version    = '0.2';                  //<-- version number
 header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
@@ -62,11 +67,11 @@ if(!isset($_SESSION['kts_en_data'])){
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<?php else:?>
 	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
 	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<script src="<?php echo _ASSET;?>js/jquery.min.js"></script>
+	<script src="<?php echo _ASSET;?>js/jquery.min.php"></script>
 	<?php endif;?>
 	<style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
   </head>
