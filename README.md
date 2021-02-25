@@ -1,6 +1,10 @@
 # kts-2-questionnarie
 The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie
 
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
+[![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana) 
+
 The Keirsey Temperament Sorter®-II (KTS®-II) is the most widely used personality instrument in the world. It is a powerful 70 question personality instrument that helps individuals discover their personality type. The KTS-II is based on Keirsey Temperament Theory™, published in the best selling books, Please Understand Me® and Please Understand Me II, by Dr. David Keirsey.
 
 ## Installation
