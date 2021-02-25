@@ -163,7 +163,7 @@ if(!isset($_SESSION['kts_en_data'])){
 		  </div>
 		</div>
 		<h6>&nbsp;</h6>
-		<div class='w3-theme-l2 w3-padding'><b>source code (v0.1) </b> : Not yet Avalilable <!--a href='https://github.com/cahyadsn/kts'>https://github.com/cahyadsn/kts</a//--></div>
+            <div class='w3-theme-l2 w3-padding'><b>source code (v0.2) </b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie'>https://github.com/cahyadsn/kts-2-questionnarie</a></div>
         <h2>&nbsp;</h2>
       </div>
     </div>		
@@ -188,6 +188,6 @@ if(!isset($_SESSION['kts_en_data'])){
     </footer>
   </div>
 </div>
-<script src="<?php echo _ASSET;?>js/kts.en.v1.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v1.php'));?>"></script>     
+<script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v2.php'));?>"></script>     
 </body>
 </html>

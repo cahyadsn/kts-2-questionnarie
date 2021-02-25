@@ -6,7 +6,7 @@
 FILENAME     : result.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2021-02-24
+UPDATED DATE : 2021-02-25
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -165,7 +165,7 @@ if(isset($_POST['d'])){
 		<p><?php $stress=explode('|',$row->stress);echo implode('</p><p>',$stress);?></p>
 		</div>
 		<h6>&nbsp;</h6/>
-		<div class='w3-theme-l2 w3-padding'><b>source code (v0.1) </b> : Not yet Avalilable <!--a href='https://github.com/cahyadsn/kts'>https://github.com/cahyadsn/kts</a//--></div>
+		<div class='w3-theme-l2 w3-padding'><b>source code (v0.2) </b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie'>https://github.com/cahyadsn/kts-2-questionnarie</a></div>
         <h2>&nbsp;</h2>
 		
       </div>
@@ -176,6 +176,6 @@ if(isset($_POST['d'])){
 		KTS®-II Questionnarie v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by <a href='mailto:cahyadsn@gmail.com'>cahya dsn</a><br />
 	</div>
 </div>
-<script src="<?php echo _ASSET;?>js/kts.en.v1.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v1.php'));?>"></script>     
+<script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v2.php'));?>"></script>     
 </body>
 </html>
