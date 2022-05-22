@@ -20,10 +20,10 @@ The Keirsey Temperament Sorter®-II (KTS®-II) is the most widely used personali
 + MySQL (http://www.mysql.com/), 
 
 ## Donation
-+ BNI : 0821 324 555
-+ Paypal : (cahyadsn@gmail.com) or (https://paypal.me/cahyadwiana)
++ Bank Syariah Indonesia (BSI) acc.no. : 821 324 5550
++ Paypal : [cahyadsn@gmail.com]([cahyadsn@gmail.com](https://paypal.me/cahyadwiana)) or [https://paypal.me/cahyadwiana](https://paypal.me/cahyadwiana)
 
 ## Contact
-+ email (cahyadsn@gmail.com)
-+ demo site    : (https://psycho.cahyadsn.com/kts) [en]
-+ source code  : (https://github.com/cahyadsn/kts-2-questionnarie)
++ email [cahyadsn@gmail.com](cahyadsn@gmail.com)
++ demo site    : [https://psycho.cahyadsn.com/kts](https://psycho.cahyadsn.com/kts) [en]
++ source code  : [https://github.com/cahyadsn/kts-2-questionnarie](https://github.com/cahyadsn/kts-2-questionnarie)
