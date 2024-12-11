@@ -1,7 +1,7 @@
 # kts-2-questionnarie
 The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana) 
 
@@ -19,9 +19,12 @@ The Keirsey Temperament Sorter®-II (KTS®-II) is the most widely used personali
 + PHP (http://www.php.net/), 
 + MySQL (http://www.mysql.com/), 
 
-## Donation
-+ Bank Syariah Indonesia (BSI) acc.no. : 821 324 5550
-+ Paypal : [cahyadsn@gmail.com]([cahyadsn@gmail.com](https://paypal.me/cahyadwiana)) or [https://paypal.me/cahyadwiana](https://paypal.me/cahyadwiana)
+## Donasi
+- untuk donasi via transfer 
+    - Bank Syariah Indonesia (BSI) 821-342-5550
+    - Bank Sinarmas (153) 005 462 4719
+    - Bank BCA Digital (Blu) (501) 000 576 776 186
+- untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
 ## Contact
 + email [cahyadsn@gmail.com](cahyadsn@gmail.com)
