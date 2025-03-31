@@ -6,7 +6,7 @@
 FILENAME     : index.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2025-04-01 05:50:37
+UPDATED DATE : 2025-04-01 05:59:57
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -61,7 +61,7 @@ if(!isset($_SESSION['kts_en_data'])){
     <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
     <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
     <?php endif;?>
-    <script src="<?php echo _ASSET;?>js/zepto.min.php"></script>
+    <script src="<?php echo _ASSET;?>js/zepto.min.js"></script>
     <style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
   </head>
   <body>

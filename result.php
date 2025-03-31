@@ -103,12 +103,11 @@ if(isset($_POST['d'])){
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<?php else:?>
 	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
 	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<script src="<?php echo _ASSET;?>js/jquery.min.php"></script>
 	<?php endif;?>
+	<script src="<?php echo _ASSET;?>js/zepto.min.js"></script>
 	<style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
   </head>
   <body>
