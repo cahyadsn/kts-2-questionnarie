@@ -6,7 +6,7 @@
 FILENAME     : result.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2021-02-25
+UPDATED DATE : 2025-04-01 05:52:37
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -23,21 +23,11 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2025 by cahya dsn; cahyadsn@gmail.com
 ================================================================================ */
 session_start();
 if(isset($_POST['d'])){
 	include 'inc/config.php';
-	$c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
-	$page=isset($_SESSION['page'])?$_SESSION['page']:0;
-	$num_perpage=10;
-	$_SESSION['author'] = 'cahyadsn';
-	$_SESSION['ver']    = sha1(rand());
-	$version    = '0.2';                  //<-- version number
-	header('Expires: '.date('r'));
-	header('Cache-Control: no-store, no-cache, must-revalidate');
-	header('Cache-Control: post-check=0, pre-check=0', FALSE);
-	header('Pragma: no-cache');
 	$data=array(
 		array('t1'=>'E','t2'=>'I','g'=>array(1,8,15,22,29,36,43,50,57,64)), 
 		array('t1'=>'S','t2'=>'N','g'=>array(2,9,16,23,30,37,44,51,58,65,3,10,17,24,31,38,45,52,59,66)),

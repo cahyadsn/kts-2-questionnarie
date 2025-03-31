@@ -6,7 +6,7 @@
 FILENAME     : index.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2021-02-24
+UPDATED DATE : 2025-04-01 05:50:37
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -23,20 +23,10 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2025 by cahya dsn; cahyadsn@gmail.com
 ================================================================================ */
 session_start();
 include 'inc/config.php';
-$c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
-$page=isset($_SESSION['page'])?$_SESSION['page']:0;
-$num_perpage=7;
-$_SESSION['author'] = 'cahyadsn';
-$_SESSION['ver']    = sha1(rand());
-$version    = '0.2';                  //<-- version number
-header('Expires: '.date('r'));
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', FALSE);
-header('Pragma: no-cache');
 if(!isset($_SESSION['kts_en_data'])){
 	$sql="SELECT * FROM kts_en_statements ORDER BY rand()";
 	$result=$db->query($sql);
@@ -51,29 +41,28 @@ if(!isset($_SESSION['kts_en_data'])){
 <html>
   <head>
     <title>KTS®-II Questionnarie</title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="expires" content="<?php echo date('r');?>" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta http-equiv="content-language" content="en" />
-	<meta name="author" content="Cahya DSN" />
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<meta name="keywords" content="Keirsey, Temperament, Sorter ,KTS , Questionnarie, personality, test" />
-	<meta name="description" content="The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie ver <?php echo $version;?> created by cahya dsn" />
-	<meta name="robots" content="index, follow" />
-	<link rel="shortcut icon" href="<?php echo _ASSET;?>img/favicon.ico" type="image/x-icon">
-	<?php if(defined('_ISONLINE') && _ISONLINE):?>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<?php else:?>
-	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
-	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<script src="<?php echo _ASSET;?>js/jquery.min.php"></script>
-	<?php endif;?>
-	<style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="author" content="Cahya DSN" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="Keirsey, Temperament, Sorter ,KTS , Questionnarie, personality, test" />
+    <meta name="description" content="The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie ver <?php echo $version;?> created by cahya dsn" />
+    <meta name="robots" content="index, follow" />
+    <link rel="shortcut icon" href="<?php echo _ASSET;?>img/favicon.ico" type="image/x-icon">
+    <?php if(defined('_ISONLINE') && _ISONLINE):?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <?php else:?>
+    <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
+    <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
+    <?php endif;?>
+    <script src="<?php echo _ASSET;?>js/zepto.min.php"></script>
+    <style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
   </head>
   <body>
   <div class="w3-top">
