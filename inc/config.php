@@ -34,14 +34,13 @@ $page=isset($_SESSION['page'])?$_SESSION['page']:0;
 $num_perpage=7;
 $_SESSION['author'] = 'cahyadsn';
 $_SESSION['ver']    = sha1(rand());
-$version    = getenv('VERSION') ?:'0.3'; //<-- version number
 header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
 header('Pragma: no-cache');
 require_once __DIR__ . '/env.php';
 loadEnv(__DIR__ . '/../.env');
-
+$version    = getenv('VERSION') ?:'0.3'; //<-- version number
 //-- database configuration
 $dbhost=getenv('DB_HOST') ?: 'localhost';
 $dbuser=getenv('DB_USER') ?: 'root';
