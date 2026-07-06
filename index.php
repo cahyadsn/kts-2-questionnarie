@@ -6,7 +6,7 @@
 FILENAME     : index.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2025-04-01 05:59:57
+UPDATED DATE : 2026-07-06 08:55:00
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -38,7 +38,7 @@ if(!isset($_SESSION['kts_en_data'])){
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?php echo $c;?>">
   <head>
     <title>KTS®-II Questionnarie</title>
     <meta charset="utf-8" />
@@ -53,130 +53,143 @@ if(!isset($_SESSION['kts_en_data'])){
     <meta name="description" content="The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie ver <?php echo $version;?> created by cahya dsn" />
     <meta name="robots" content="index, follow" />
     <link rel="shortcut icon" href="<?php echo _ASSET;?>img/favicon.ico" type="image/x-icon">
-    <?php if(defined('_ISONLINE') && _ISONLINE):?>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <?php else:?>
-    <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
-    <link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-    <?php endif;?>
-    <script src="<?php echo _ASSET;?>js/zepto.min.js"></script>
-    <style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
+    <link rel="stylesheet" href="<?php echo _ASSET;?>css/style.css">
   </head>
   <body>
-  <div class="w3-top">
-  <div class="w3-bar w3-theme-d5">
-    <span class="w3-bar-item"># KTS®-II v<?php echo $version;?></span>
-    <a href="#" class="w3-bar-item w3-button">Home</a>
-		<div class="w3-dropdown-hover">
-		  <button class="w3-button">Themes</button>
-		  <div class="w3-dropdown-content w3-white w3-card-4" id="theme">
-				<?php
-				$color=array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
-				foreach($color as $c){
-					echo "<a href='#' class='w3-bar-item w3-button w3-{$c} color' data-value='{$c}'> </a>";
-				}
-				?>	
-			</div>
-		</div>
-	</div>
-</div>  
-<div class="w3-container">
-   <form action='result.php' method='post' id='kts'>
-	<input type="hidden" id="page" value="0">
-    <div class="w3-card-4">
-      <div class='w3-container'>
-        <h2>&nbsp;</h2>
-        <h2 class="w3-text-theme">The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie</h1>
-        <div class="w3-row">
-          <div class="w3-col s12" id='main'>
-            The <b>Keirsey Temperament Sorter®-II (KTS®-II)</b> is the most widely used personality instrument in the world. It is a powerful 70 question personality instrument that helps individuals discover their personality type. The KTS-II is based on <b>Keirsey Temperament Theory™</b>, published in the best selling books, <b><i>Please Understand Me®</i></b> and <b><i>Please Understand Me II</i></b>, by <b>Dr. David Keirsey</b>.
-			<div class="w3-container w3-section w3-theme-l3">
-				<span onclick="this.parentElement.style.display='none'" class="w3-closebtn" style='float:right;'>x</span>	
-			  <h3>Instructions</h3>
-			  <p>It is important that you answer all the questions from the perspective of what feels real for you and not try to give answers that you think would sound like how you should behave in any particular situation. The objective is to understand yourself as you really are – not the way, for example, you must react in your job, or others expect you to behave. Effectiveness as an individual or leader is not based on any particular personality style. It is really about how well you know yourself and others</p>
-			  <p>There are five choices for each question, which is have number 1 to 5 with meaning : (1) Absolutely (2) Kinda (3) 50/50 (4) Not Really and {5) Not at All. There are no right or wrong answers – all of the population agrees with whatever choice you make.</p>
-			</div> 
-          </div>
-		  <h6>&nbsp;</h6>
-        </div>   
-		<div class="w3-row">
-			<table class="w3-table w3-striped">
-			  <thead>
-				<tr class="w3-theme-d3">
-					<th rowspan='2'>No</th>
-					<th rowspan='2'>Statements</th>
-					<th colspan='5'>Options</th>
-				</tr>
-				<tr class="w3-theme-d3">
-					<th title='Absolutely'>1</th>
-					<th title='Kinda'>2</th>
-					<th title='50/50'>3</th>
-					<th title='Not Really'>4</th>
-					<th title='Not at All'>5</th>
-				</tr>
-			  </thead>
-			  <tbody id='p0'>
-				<?php
-				$no=0;
-				foreach($data as $d){
-				  $c=rand()%5;
-				  echo "
-					<tr style='border-top:solid 1px #999;'>
-					  <td style='width:30px !important;'>".++$no."</td>
-					  <td class='right'>{$d->statement}</td>
-					  <td style='padding-left:16px !important;width:30px !important;' class='incomplete' title='absolutely'><input type='radio' name='d[{$d->id}]' value='1' class='w3-radio' ".(isset($_GET['auto'])?($c==0?'checked ':''):'')."required /></td>
-					  <td style='padding-left:16px !important;width:30px !important;' class='incomplete' title='Kinda'><input type='radio' name='d[{$d->id}]' value='2' class='w3-radio' ".(isset($_GET['auto'])?($c==1?'checked ':''):'')."required /></td>
-					  <td style='padding-left:16px !important;width:30px !important;' class='incomplete' title='50/50'><input type='radio' name='d[{$d->id}]' value='3' class='w3-radio' ".(isset($_GET['auto'])?($c==2?'checked ':''):'')."required /></td>
-					  <td style='padding-left:16px !important;width:30px !important;' class='incomplete' title='Not Really'><input type='radio' name='d[{$d->id}]' value='4' class='w3-radio' ".(isset($_GET['auto'])?($c==3?'checked ':''):'')."required /></td>
-					  <td style='padding-left:16px !important;width:30px !important;' class='incomplete' title='Not at All'><input type='radio' name='d[{$d->id}]' value='5' class='w3-radio' ".(isset($_GET['auto'])?($c==4?'checked ':''):'')."required /></td>
-                    </tr>
-					   ";
-				  if($no%$num_perpage==0) {
-					echo "</tbody><tbody style='display:none' id='p".round($no/$num_perpage)."'>";
-				  }
-				}
-				?>
-			  </tbody>
-			</table>
-		</div>
-        <div class="w3-row">
-		  <h6>&nbsp;</h6>
-		  <div class="w3-col s2 w3-padding">
-			<button class="w3-button w3-round-large w3-theme-d1 w3-margin-8 w3-disabled" id="btn_back" disabled>prev</button>
-			<button class="w3-button w3-round-large w3-theme-d1 w3-margin-8" id="btn_next">next</button>
-          </div>
-          <div class="w3-col s10 w3-padding">
-            <input type='submit' value='process' id='btn_kirim' class='w3-button w3-round-large w3-theme-d1 w3-right w3-margin-8 w3-disabled' disabled/>
-		  </div>
-		</div>
-		<h6>&nbsp;</h6>
-            <div class='w3-theme-l2 w3-padding'><b>source code (v0.2) </b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie'>https://github.com/cahyadsn/kts-2-questionnarie</a></div>
-        <h2>&nbsp;</h2>
-      </div>
-    </div>		
-	</form>
-</div>
-<div class="w3-bottom">
-	<div class="w3-bar w3-theme-d4 w3-center w3-padding">
-		KTS®-II Questionnarie v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by <a href='mailto:cahyadsn@gmail.com'>cahya dsn</a><br />
-	</div>
-</div>
-<div id="warning" class="w3-modal">
-  <div class="w3-modal-content">
-    <header class="w3-container w3-red"> 
-      <span onclick="document.getElementById('warning').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
-      <h2>Warning</h2>
-    </header>
-    <div class="w3-container">
-      <p id='msg'></p>
+  <header>
+    <a href="#" class="brand"># KTS®-II v<?php echo $version;?></a>
+    <div class="theme-selector" id="theme">
+      <?php
+      $colors_list=array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
+      foreach($colors_list as $col){
+        $active_class = ($col === $c) ? ' active' : '';
+        echo "<a href='#' class='theme-pill theme-{$col} color{$active_class}' data-value='{$col}' title='{$col}'></a>";
+      }
+      ?>	
     </div>
-    <footer class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-      <a href='#' onclick="document.getElementById('warning').style.display='none'" class="w3-button w3-grey">close</a>
-    </footer>
+  </header>
+
+  <div class="container">
+    <form action='result.php' method='post' id='kts'>
+      <input type="hidden" id="page" value="0">
+      
+      <div class="card">
+        <h2 class="title">The Keirsey Temperament Sorter®-II (KTS®-II) Questionnaire</h2>
+        
+        <div class="intro-text">
+          The <b>Keirsey Temperament Sorter®-II (KTS®-II)</b> is the most widely used personality instrument in the world. It is a powerful 70 question personality instrument that helps individuals discover their personality type. The KTS-II is based on <b>Keirsey Temperament Theory™</b>, published in the best selling books, <b><i>Please Understand Me®</i></b> and <b><i>Please Understand Me II</i></b>, by <b>Dr. David Keirsey</b>.
+        </div>
+
+        <div class="instruction-box">
+          <button type="button" onclick="this.parentElement.style.display='none'" class="close-btn">&times;</button>
+          <h3>Instructions</h3>
+          <p>It is important that you answer all the questions from the perspective of what feels real for you and not try to give answers that you think would sound like how you should behave in any particular situation. The objective is to understand yourself as you really are – not the way, for example, you must react in your job, or others expect you to behave. Effectiveness as an individual or leader is not based on any particular personality style. It is really about how well you know yourself and others.</p>
+          <p>There are five choices for each question, which are numbered 1 to 5 with meaning: (1) Absolutely, (2) Kinda, (3) 50/50, (4) Not Really, and (5) Not at All. There are no right or wrong answers – all of the population agrees with whatever choice you make.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th rowspan='2' class="col-no">No</th>
+                <th rowspan='2' class="col-statement">Statements</th>
+                <th colspan='5' style="text-align: center;">Options</th>
+              </tr>
+              <tr>
+                <th class="col-option" title='Absolutely'>1</th>
+                <th class="col-option" title='Kinda'>2</th>
+                <th class="col-option" title='50/50'>3</th>
+                <th class="col-option" title='Not Really'>4</th>
+                <th class="col-option" title='Not at All'>5</th>
+              </tr>
+            </thead>
+            <tbody id='p0'>
+              <?php
+              $no=0;
+              foreach($data as $d){
+                $c_rand=rand()%5;
+                echo "
+                  <tr style='border-top:solid 1px #e2e8f0;'>
+                    <td class='col-no'>".++$no."</td>
+                    <td class='col-statement right'>{$d->statement}</td>
+                    <td class='col-option incomplete' title='absolutely'>
+                      <label class='radio-container'>
+                        <input type='radio' name='d[{$d->id}]' value='1' class='radio-input' ".(isset($_GET['auto'])?($c_rand==0?'checked ':''):'')."required />
+                        <span class='checkmark'></span>
+                      </label>
+                    </td>
+                    <td class='col-option incomplete' title='Kinda'>
+                      <label class='radio-container'>
+                        <input type='radio' name='d[{$d->id}]' value='2' class='radio-input' ".(isset($_GET['auto'])?($c_rand==1?'checked ':''):'')."required />
+                        <span class='checkmark'></span>
+                      </label>
+                    </td>
+                    <td class='col-option incomplete' title='50/50'>
+                      <label class='radio-container'>
+                        <input type='radio' name='d[{$d->id}]' value='3' class='radio-input' ".(isset($_GET['auto'])?($c_rand==2?'checked ':''):'')."required />
+                        <span class='checkmark'></span>
+                      </label>
+                    </td>
+                    <td class='col-option incomplete' title='Not Really'>
+                      <label class='radio-container'>
+                        <input type='radio' name='d[{$d->id}]' value='4' class='radio-input' ".(isset($_GET['auto'])?($c_rand==3?'checked ':''):'')."required />
+                        <span class='checkmark'></span>
+                      </label>
+                    </td>
+                    <td class='col-option incomplete' title='Not at All'>
+                      <label class='radio-container'>
+                        <input type='radio' name='d[{$d->id}]' value='5' class='radio-input' ".(isset($_GET['auto'])?($c_rand==4?'checked ':''):'')."required />
+                        <span class='checkmark'></span>
+                      </label>
+                    </td>
+                  </tr>
+                ";
+                if($no%$num_perpage==0) {
+                  echo "</tbody><tbody style='display:none' id='p".round($no/$num_perpage)."'>";
+                }
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="controls">
+          <div>
+            <button class="btn btn-secondary disabled" id="btn_back" disabled>Prev</button>
+            <button class="btn btn-secondary" id="btn_next">Next</button>
+          </div>
+          <div>
+            <input type='submit' value='Process' id='btn_kirim' class='btn btn-primary disabled' disabled/>
+          </div>
+        </div>
+
+
+        <div class="footer-info">
+          <b>Source Code (v0.3)</b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie' target="_blank">https://github.com/cahyadsn/kts-2-questionnarie</a>
+        </div>
+      </div>
+    </form>
   </div>
-</div>
-<script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v2.php'));?>"></script>     
+
+  <footer class="page-footer">
+    KTS®-II Questionnaire v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by&nbsp;<a href='mailto:cahyadsn@gmail.com'>cahya dsn</a>
+  </footer>
+
+  <div id="warning" class="modal">
+    <div class="modal-content">
+      <header class="modal-header"> 
+        <h3>Warning</h3>
+        <span data-close="modal" class="close-btn" style="color: white; font-size: 1.5rem;">&times;</span>
+      </header>
+      <div class="modal-body">
+        <p id='msg'></p>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" data-close="modal" class="btn btn-secondary">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime('assets/js/kts.en.v2.php'));?>"></script>     
 </body>
-</html>
+</html>

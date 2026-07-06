@@ -6,7 +6,7 @@
 FILENAME     : inc/config.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2025-04-01 05:54:43
+UPDATED DATE : 2026-07-06 08:55:00
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -34,15 +34,18 @@ $page=isset($_SESSION['page'])?$_SESSION['page']:0;
 $num_perpage=7;
 $_SESSION['author'] = 'cahyadsn';
 $_SESSION['ver']    = sha1(rand());
-$version    = '0.3';                  //<-- version number
+$version    = getenv('VERSION') ?:'0.3'; //<-- version number
 header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
 header('Pragma: no-cache');
+require_once __DIR__ . '/env.php';
+loadEnv(__DIR__ . '/../.env');
+
 //-- database configuration
-$dbhost='localhost';
-$dbuser='root';
-$dbpass='';
-$dbname='psycho';
+$dbhost=getenv('DB_HOST') ?: 'localhost';
+$dbuser=getenv('DB_USER') ?: 'root';
+$dbpass=getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+$dbname=getenv('DB_NAME') ?: 'psycho';
 //-- database connection
 $db=new mysqli($dbhost,$dbuser,$dbpass,$dbname);

@@ -6,7 +6,7 @@
 FILENAME     : result.php
 AUTHOR       : CAHYA DSN
 CREATED DATE : 2017-12-12
-UPDATED DATE : 2025-04-01 05:52:37
+UPDATED DATE : 2026-07-06 08:55:00
 DEMO SITE    : http://psycho.cahyadsn.com/kts
 SOURCE CODE  : https://github.com/cahyadsn/kts-2-questionnarie
 ================================================================================
@@ -82,89 +82,94 @@ if(isset($_POST['d'])){
 	header('location:index.php');
 }
 ?>
-?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?php echo $c;?>">
   <head>
-    <title>KTS®-II Questionnarie</title>
-	<meta charset="utf-8" />
+    <title>KTS®-II Questionnaire</title>
+    <meta charset="utf-8" />
     <meta http-equiv="expires" content="<?php echo date('r');?>" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta http-equiv="content-language" content="en" />
-	<meta name="author" content="Cahya DSN" />
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<meta name="keywords" content="Keirsey, Temperament, Sorter ,KTS , Questionnarie, personality, test" />
-	<meta name="description" content="The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie ver <?php echo $version;?> created by cahya dsn" />
-	<meta name="robots" content="index, follow" />
-	<link rel="shortcut icon" href="<?php echo _ASSET;?>img/favicon.ico" type="image/x-icon">
-	<?php if(defined('_ISONLINE') && _ISONLINE):?>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-	<?php else:?>
-	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3.css">
-	<link rel="stylesheet" href="<?php echo _ASSET;?>css/w3/w3-theme-<?php echo $c;?>.css" media="all" id="kts_en_css">
-	<?php endif;?>
-	<script src="<?php echo _ASSET;?>js/zepto.min.js"></script>
-	<style>body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif} td.incomplete {color:red !important;}</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="author" content="Cahya DSN" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="Keirsey, Temperament, Sorter ,KTS , Questionnarie, personality, test" />
+    <meta name="description" content="The Keirsey Temperament Sorter®-II (KTS®-II) Questionnarie ver <?php echo $version;?> created by cahya dsn" />
+    <meta name="robots" content="index, follow" />
+    <link rel="shortcut icon" href="<?php echo _ASSET;?>img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="<?php echo _ASSET;?>css/style.css">
   </head>
   <body>
-  <div class="w3-top">
-  <div class="w3-bar w3-theme-d5">
-    <span class="w3-bar-item"># KTS®-II v<?php echo $version;?></span>
-    <a href="index.php" class="w3-bar-item w3-button">Home</a>
-		<div class="w3-dropdown-hover">
-		  <button class="w3-button">Themes</button>
-		  <div class="w3-dropdown-content w3-white w3-card-4" id="theme">
-				<?php
-				$color=array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
-				foreach($color as $c){
-					echo "<a href='#' class='w3-bar-item w3-button w3-{$c} color' data-value='{$c}'> </a>";
-				}
-				?>	
-			</div>
-		</div>
-	</div>
-</div>  
-<div class="w3-container">
-    <div class="w3-card-4">
-      <div class='w3-container'>
-        <h2>&nbsp;</h2>
-        <h2 class="w3-text-theme">The Keirsey Temperament Sorter®-II (KTS®-II) Result</h1>
-        <div class="w3-row">
-		<!--pre><?php print_r($r);print_r($persen);print_r($code);print_r($row);?></pre//-->
-		<h3 class='w3-theme-l3 w3-padding'>Temperament : <?php echo $row->temperament;?> (<?php echo $row->code;?>)</h3>
-		<h4>Overview</h4>
-		<p><?php echo $row->overview;?></p>
-		<h4>All <?php echo $row->temperament;?> share the following core characteristics:</h4>
-		<ul>
-		<li><?php $characters=explode('|',$row->characteristic);echo implode('</li><li>',$characters);?></li>
-		</ul>
-		<h4>Portrait of the <?php echo $row->temperament;?></h4>
-		<p><?php echo implode('</p><p>',explode('|',$row->content));?></p>
-		<h3 class='w3-theme-l3 w3-padding'>Personality type : <?php echo $row->short;?> (<?php echo $row->symbol;?>)</h3>
-		<p><?php $personality=explode('|',$row->description);echo implode('</p><p>',$personality);?></p>
-		<h4>Finding Your Passion or What Makes a Job Right for You?</h4>
-		<p><?php echo $row->temperament.' - '.$row->finding;?></p>
-		<p><?php echo $row->passion;?></p>
-		<h4>Dealing with Stress from Work: <?php echo $row->temperament;?></h4>
-		<p>How do you deal with work-related stress? Each personality type has different stressors and copes in different ways. Better understanding of your own stressors and coping mechanisms can help you reduce the tension and anxiety work stress often creates.</p><p><?php echo $row->dealing;?></p>
-		<p><?php $stress=explode('|',$row->stress);echo implode('</p><p>',$stress);?></p>
-		</div>
-		<h6>&nbsp;</h6/>
-		<div class='w3-theme-l2 w3-padding'><b>source code (v0.2) </b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie'>https://github.com/cahyadsn/kts-2-questionnarie</a></div>
-        <h2>&nbsp;</h2>
-		
+  <header>
+    <a href="index.php" class="brand"># KTS®-II v<?php echo $version;?></a>
+    <div class="theme-selector" id="theme">
+      <?php
+      $colors_list=array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
+      foreach($colors_list as $col){
+        $active_class = ($col === $c) ? ' active' : '';
+        echo "<a href='#' class='theme-pill theme-{$col} color{$active_class}' data-value='{$col}' title='{$col}'></a>";
+      }
+      ?>	
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2 class="title">The Keirsey Temperament Sorter®-II (KTS®-II) Result</h2>
+      
+      <div class="result-box">
+        <h3>Temperament : <?php echo $row->temperament;?> (<?php echo $row->code;?>)</h3>
       </div>
-    </div>		
-</div>
-<div class="w3-bottom">
-	<div class="w3-bar w3-theme-d4 w3-center w3-padding">
-		KTS®-II Questionnarie v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by <a href='mailto:cahyadsn@gmail.com'>cahya dsn</a><br />
-	</div>
-</div>
-<script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v2.php'));?>"></script>     
+
+      <div class="result-section">
+        <h4>Overview</h4>
+        <p><?php echo $row->overview;?></p>
+      </div>
+
+      <div class="result-section">
+        <h4>All <?php echo $row->temperament;?> share the following core characteristics:</h4>
+        <ul>
+          <li><?php $characters=explode('|',$row->characteristic);echo implode('</li><li>',$characters);?></li>
+        </ul>
+      </div>
+
+      <div class="result-section">
+        <h4>Portrait of the <?php echo $row->temperament;?></h4>
+        <p><?php echo implode('</p><p>',explode('|',$row->content));?></p>
+      </div>
+
+      <div class="result-box">
+        <h3>Personality type : <?php echo $row->short;?> (<?php echo $row->symbol;?>)</h3>
+      </div>
+
+      <div class="result-section">
+        <p><?php $personality=explode('|',$row->description);echo implode('</p><p>',$personality);?></p>
+      </div>
+
+      <div class="result-section">
+        <h4>Finding Your Passion or What Makes a Job Right for You?</h4>
+        <p><b><?php echo $row->temperament.' - '.$row->finding;?></b></p>
+        <p><?php echo $row->passion;?></p>
+      </div>
+
+      <div class="result-section">
+        <h4>Dealing with Stress from Work: <?php echo $row->temperament;?></h4>
+        <p>How do you deal with work-related stress? Each personality type has different stressors and copes in different ways. Better understanding of your own stressors and coping mechanisms can help you reduce the tension and anxiety work stress often creates.</p>
+        <p><?php echo $row->dealing;?></p>
+        <p><?php $stress=explode('|',$row->stress);echo implode('</p><p>',$stress);?></p>
+      </div>
+
+      <div class="footer-info">
+        <b>Source Code (v0.3)</b> : <a href='https://github.com/cahyadsn/kts-2-questionnarie' target="_blank">https://github.com/cahyadsn/kts-2-questionnarie</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    KTS®-II Questionnaire v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by&nbsp;<a href='mailto:cahyadsn@gmail.com'>cahya dsn</a>
+  </footer>
+
+  <script src="<?php echo _ASSET;?>js/kts.en.v2.php?v=<?php echo md5(filemtime(_ASSET.'js/kts.en.v2.php'));?>"></script>     
 </body>
-</html>
+</html>
