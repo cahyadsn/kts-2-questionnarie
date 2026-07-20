@@ -15,6 +15,7 @@ The **Keirsey Temperament Sorter®-II (KTS®-II)** is the most widely used perso
 - **Vanilla JS**: Light weight, zero runtime dependencies. (Completely removed jQuery & Zepto.js).
 - **No CSS Frameworks**: Handcrafted custom CSS layout removing all external w3.css styling.
 - **Secure Credentials**: Integrated native PHP environment loader supporting `.env` configurations.
+- **Native Unit Testing**: Custom zero-dependency PHP unit testing harness verifying environment loading and KTS scoring logic.
 
 ---
 
@@ -47,6 +48,12 @@ The **Keirsey Temperament Sorter®-II (KTS®-II)** is the most widely used perso
      ```
    - Open your browser and navigate to `http://localhost:8000`.
 
+5. **Run Unit Tests**:
+   - Execute the test suite using standard PHP:
+     ```bash
+     php run_tests.php
+     ```
+
 ---
 
 ## Technology Stack
@@ -58,6 +65,11 @@ The **Keirsey Temperament Sorter®-II (KTS®-II)** is the most widely used perso
 ---
 
 ## Changelog
+
+### v1.1 (July 2026)
+- **Testing Infrastructure**:
+  - Implemented a custom zero-dependency PHP unit testing runner ([`tests/TestRunner.php`](tests/TestRunner.php)) with CLI coloring and structured assertion error reporting.
+  - Created unit tests ([`tests/KtsTest.php`](tests/KtsTest.php)) to verify environment configuration loading and isolated Keirsey Temperament Sorter scoring logic ([`inc/kts_calc.php`](inc/kts_calc.php)).
 
 ### v1.0 (July 2026)
 - **Framework & Libraries Cleanup**:

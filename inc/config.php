@@ -40,7 +40,7 @@ header('Cache-Control: post-check=0, pre-check=0', FALSE);
 header('Pragma: no-cache');
 require_once __DIR__ . '/env.php';
 loadEnv(__DIR__ . '/../.env');
-$version    = getenv('VERSION') ?:'0.3'; //<-- version number
+$version    = getenv('VERSION') ?:'1.1'; //<-- version number
 //-- database configuration
 $dbhost=getenv('DB_HOST') ?: 'localhost';
 $dbuser=getenv('DB_USER') ?: 'root';
